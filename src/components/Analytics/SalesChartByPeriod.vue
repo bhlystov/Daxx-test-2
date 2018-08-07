@@ -1,0 +1,62 @@
+<template>
+    <chart :options="chartOptions" />
+</template>
+
+<script>
+    import Chart from './highcharts';
+
+    export default {
+        name: 'SalesChartByPeriod',
+        components: {
+            Chart,
+        },
+        props: {
+            title: {
+                type: String,
+            },
+            labels: {
+                type: Array,
+                required: true,
+            },
+            //Documentation which data we need https://www.highcharts.com/demo/combo-dual-axes/grid-light
+            series: {
+                type: Array,
+                required: true,
+            },
+
+            yAxis: {
+                type: Array,
+                required: true,
+            },
+        },
+        computed: {
+            chartOptions() {
+                return {
+                    chart: {
+                        zoomType: 'xy',
+                    },
+                    title: {
+                        text: this.title,
+                    },
+                    credits: {
+                        enabled: false,
+                    },
+                    tooltip: {
+                        shared: true,
+                    },
+                    xAxis: {
+                        categories: this.labels,
+                        crosshair: true,
+                    },
+                    legend: {
+                        symbolWidth: 30
+                    },
+                    yAxis: this.yAxis,
+                    series: this.series,
+                };
+            },
+        },
+    }
+</script>
+
+
