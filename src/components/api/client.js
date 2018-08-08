@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-// import backendRouter from '../../../../common/backend-router';
-
 import qs from 'qs';
 
+const url = "http://wb-predictivemaintenance-api.prsp7vkew2.eu-central-1.elasticbeanstalk.com/api/TorqueValues";
+
+
 class ApiClient {
-    async getAnaliticsData(companyId, criteria) {
-        const url = backendRouter.generate('api_shop_analytics_get_sales_report', {companyId: companyId, criteria});
+    async getAnaliticsData() {
 
         const responseAnaliticsData = await this.request('get', url);
 

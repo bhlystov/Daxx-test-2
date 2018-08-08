@@ -6,7 +6,7 @@
     import Chart from './highcharts';
 
     export default {
-        name: 'SalesChartByPeriod',
+        name: 'TorqueChart',
         components: {
             Chart,
         },
@@ -16,7 +16,7 @@
             },
             labels: {
                 type: Array,
-                required: true,
+                //required: true,
             },
             //Documentation which data we need https://www.highcharts.com/demo/combo-dual-axes/grid-light
             series: {
@@ -47,9 +47,17 @@
                     xAxis: {
                         categories: this.labels,
                         crosshair: true,
+                        title: {
+                            text: "Value position"
+                        }
                     },
                     legend: {
-                        symbolWidth: 30
+                        symbolWidth: 30,
+                        align: 'right',
+                        x: -30,
+                        verticalAlign: 'top',
+                        y: 25,
+                        floating: true,
                     },
                     yAxis: this.yAxis,
                     series: this.series,
