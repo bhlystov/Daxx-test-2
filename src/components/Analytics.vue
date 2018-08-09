@@ -8,9 +8,11 @@
         >
             <p>Some content inside</p>
         </aside>
-        <main v-loading="loading"
-              class="col-xs-9 col-md-9 col-lg-9 analytics-container"
+        <main
+                v-loading="isLoading"
+                class="col-xs-9 col-md-9 col-lg-9 analytics-container"
         >
+            <h2>Open</h2>
             <torque-chart
                     :labels="chartLabelsOpen"
                     :yAxis="chartParamsView"
@@ -18,6 +20,7 @@
                     class="open-torque column-chart"
             />
 
+            <h2>Close</h2>
             <torque-chart
                     :labels="chartLabelsClose"
                     :yAxis="chartParamsView"
@@ -41,7 +44,7 @@
         },
         data() {
             return {
-                loading: false,
+                isLoading: false,
                 analytics: [],
             }
         },
@@ -167,9 +170,9 @@
         },
         methods: {
             async reload() {
-                this.loading = true;
+                this.isLoading = true;
                 this.analytics = await apiClient.getAnaliticsData();
-                this.loading = false;
+                this.isLoading = false;
             },
         },
     }
