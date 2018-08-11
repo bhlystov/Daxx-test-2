@@ -102,7 +102,9 @@
              */
 
             chartSourceDirectionOpen() {
-                return this.sortingSourceAnalyticsDataByPosition.filter( item => item.Direction === 'Open') || [];
+                return this.sortingSourceAnalyticsDataByPosition.filter(
+                    item => item.Direction === 'Open' && item.Profile === 1
+                    ) || [];
             },
 
             chartLabelsOpen() {
@@ -137,7 +139,9 @@
              * Computed properties For Close Torque
              */
             chartSourceDirectionClose() {
-                return this.sortingSourceAnalyticsDataByPosition.filter( item => item.Direction === 'Close') || [];
+                return this.sortingSourceAnalyticsDataByPosition.filter(
+                    item => item.Direction === 'Close' && item.Profile === 1
+                    ) || [];
             },
             chartLabelsClose() {
                 return this.chartSourceDirectionClose.map(item => item.Position);
